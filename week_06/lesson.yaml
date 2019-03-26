@@ -34,12 +34,10 @@
   Hint: Use babynames as argument in str()
 
 - Class: text
-  Output: what is the unit of analysis of the dataset? How many rows are there in the dataset? How many variables? You should note that this is dataset is actually an aggregation of the population data: each row is a year–name–sex observation (so the unit of analysis is a name used in a given year for a baby of a given sex).
+  Output: what is the unit of analysis of the dataset? How many rows are there in the dataset? How many variables? You should note that this is dataset is actually an aggregation of the population data - each row is a year–name–sex observation (so the unit of analysis is a name used in a given year for a baby of a given sex).
   
 - Class: text
   Output: Some names are used for male and female babies. Let's check this with the name Skylar. 
-
-
   
 - Class: cmd_question
   Output: First try the column name == "Skylar". Use the $ to get the column name.
