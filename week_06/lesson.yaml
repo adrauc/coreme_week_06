@@ -80,7 +80,7 @@
   Hint: Type name_2013 <- babynames[babynames$year == 2013,"name"].    
     
 - Class: cmd_question
-  Output: Try to use this vector now with duplicated and sum. duplicated gives us TRUE if a name appears twice and sum counts the TRUE.
+  Output: Try to use this vector name_2013 now with duplicated and sum. duplicated gives us TRUE if a name appears twice and sum counts the TRUE.
   CorrectAnswer: sum(duplicated(name_2013))
   AnswerTests: omnitest(correctExpr='sum(duplicated(name_2013))')
   Hint: Type use name_2013 as argument inside of duplicated(). The use this whole expression as argument in sum().  
