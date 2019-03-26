@@ -26,11 +26,6 @@ if(!require(scales)){
   library(scales)
 }
 
-if(!require(scales)){
-  install.packages("babynames")
-  library(babynames)
-}
-
 
 table_df <- function(data_vector) {
   # create the table, create the df and then order

@@ -194,7 +194,7 @@
   Hint: Type sd(est_20)  
   
 - Class: text
-  Output: If we change the sample size, the SE will change. Larger samples produce smaller SEs (to the point that if we sample all units in the population, the SE is 0). 
+  Output: If we change the sample size, the SE will change. Larger samples produce smaller sds (to the point that if we sample all units in the population, the SE is 0). 
   
 - Class: cmd_question
   Output: As a last example I have drawn 1000 times 1000 samples (saved in est_1000). Again, check the sd.
@@ -203,10 +203,10 @@
   Hint: Type sd(est_1000)  
   
 - Class: text
-  Output: Now the se is extremly small.
+  Output: Now the sd is extremly small.
     
 - Class: text
-  Output: When we have access to population data we can calculate this SE without ever drawing any samples because the SE is simply a function of the variance of the population. 
+  Output: When we have access to population data we can calculate the SE without ever drawing any samples because the SE is simply a function of the variance of the population. 
   
 - Class: cmd_question
   Output: The variance is .25. we now have to calculate the sqrt(.25/n). We can calculate now the se for 1000. 
@@ -234,9 +234,9 @@
 
 - Class: cmd_question
   Output: n is 10 as we only sampled 10 babies. We no get the se with sd_m/sqrt(10). Save the value in se_m.
-  CorrectAnswer: se_m <- sd_m/sqrt(10))
-  AnswerTests: omnitest(correctExpr='se_m <- sd_m/sqrt(10))')
-  Hint: Type se_m <- sd_m/sqrt(10))
+  CorrectAnswer: se_m <- sd_m/sqrt(10)
+  AnswerTests: omnitest(correctExpr='se_m <- sd_m/sqrt(10)')
+  Hint: Type se_m <- sd_m/sqrt(10)
   
 - Class: cmd_question
   Output: Now y-hat with mean(s1_df$sex == "M") and save it in mean_m
