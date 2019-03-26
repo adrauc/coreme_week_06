@@ -246,7 +246,7 @@
 
 - Class: cmd_question
   Output: Now we multiply se_m by 1.96 and save it in ci_sample. Type ci_sample <- se_m * 1.96
-  CorrectAnswer: mean_m <- mean(s1_df$sex == "M")
+  CorrectAnswer: ci_sample <- se_m * 1.96
   AnswerTests: omnitest(correctExpr='ci_sample <- se_m * 1.96')
   Hint: Type ci_sample <- se_m * 1.96
 
