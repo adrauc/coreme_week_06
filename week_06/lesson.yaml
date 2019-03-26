@@ -89,7 +89,7 @@
   Output: There are 2435 names in 2013 that were used for both female and male babies. Let's check how it changed over time.
   
 - Class: cmd_question
-  Output: First we subset the row with Skylar as name: skylar <- babynames[babynames$name == "Skylar", ]
+  Output: First we subset the row with Skylar as name - skylar <- babynames[babynames$name == "Skylar", ]
   CorrectAnswer: skylar <- babynames[babynames$name == "Skylar", ]
   AnswerTests: omnitest(correctExpr='skylar <- babynames[babynames$name == "Skylar", ]')
   Hint: Type skylar <- babynames[babynames$name == "Skylar", ]  
