@@ -1,0 +1,349 @@
+- Class: meta
+  Course: week 02
+  Lesson: 01 SOCNE
+  Author: Adrian Rauchfleisch (borrowed parts from Nick Carchedi)
+  Type: Standard
+  Organization: National Taiwan University
+  Version: 2.4.3
+
+
+- Class: text
+  Output: Dear Taida students, welcome to my R and RStudio introduction course. Whenever you see three points below (e.g. `...`) then press the Enter-key to continue the lesson. Now press the Enter-key to continue.
+
+- Class: text
+  Output: In this lesson, we`ll cover matrices and data frames. Both represent `rectangular` data types, meaning that they are used to store tabular data, with rows and columns.  
+
+- Class: text
+  Output: In social science rows are usually cases (e.g. respondents in a survey, tweets, users etc.). Columns are variables - representing characteristics or answers.
+
+- Class: text
+  Output: The main difference, as you'll see, is that matrices can only contain a single class of data, while data frames can consist of many different classes of data.
+  
+- Class: cmd_question
+  Output: Let's create a vector containing the numbers 1 through 20 using the `:` operator. Store the result in a variable called my_vector.
+  CorrectAnswer: my_vector <- 1:20
+  AnswerTests: omnitest(correctExpr='my_vector <- 1:20')
+  Hint: Type 1:20 with no spaces. Make sure to use a regular colon and NOT a semi-colon.
+
+- Class: cmd_question
+  Output: View the contents of the vector you just created.
+  CorrectAnswer: my_vector
+  AnswerTests: omnitest(correctExpr='my_vector')
+  Hint: Type my_vector to view its contents.
+
+- Class: cmd_question
+  Output: You can always check the structure of an object using the str() function. Try that now with my_vector.
+  CorrectAnswer: str(my_vector)
+  AnswerTests: omnitest(correctExpr='str(my_vector)')
+  Hint: Type str(my_vector).
+  
+- Class: cmd_question
+  Output: The dim() function tells us the 'dimensions' of an object. What happens if we do dim(my_vector)? Give it a try.
+  CorrectAnswer: dim(my_vector)
+  AnswerTests: omnitest(correctExpr='dim(my_vector)')
+  Hint: Just type dim(my_vector) to see what happens.
+
+- Class: cmd_question
+  Output: Clearly, that`s not very helpful! Since my_vector is a vector, it doesn`t have a `dim` attribute (so it's just NULL), but we can find its length using the length() function. Try that now.
+  CorrectAnswer: length(my_vector)
+  AnswerTests: omnitest(correctExpr='length(my_vector)')
+  Hint: Type length(my_vector) to view the length of the vector you just created.
+
+- Class: cmd_question
+  Output: Ah! That's what we wanted. But, what happens if we give my_vector a `dim` attribute? Let's give it a try. Type dim(my_vector) <- c(4, 5).
+  CorrectAnswer: dim(my_vector) <- c(4, 5)
+  AnswerTests: omnitest(correctExpr='dim(my_vector) <- c(4, 5)')
+  Hint: Type dim(my_vector) <- c(4, 5) to give my_vector a `dim` attribute.
+
+- Class: text
+  Output: It's okay if that last command seemed a little strange to you. It should! The dim() function allows you to get OR set the `dim` attribute for an R object. In this case, we assigned the value c(4, 5) to the `dim` attribute of my_vector.
+
+- Class: cmd_question
+  Output: Use dim(my_vector) to confirm that we've set the `dim` attribute correctly.
+  CorrectAnswer: dim(my_vector)
+  AnswerTests: omnitest(correctExpr='dim(my_vector)')
+  Hint: Just type dim(my_vector) to make sure the `dim` attribute has been set.
+  
+- Class: cmd_question
+  Output: Another way to see this is by calling the attributes() function on my_vector. Try it now.
+  CorrectAnswer: attributes(my_vector)
+  AnswerTests: omnitest(correctExpr='attributes(my_vector)')
+  Hint: The command attributes(my_vector) will show you all of the attributes for the my_vector object.
+
+- Class: text
+  Output: Just like in math class, when dealing with a 2-dimensional object (think rectangular table), the first number is the number of rows and the second is the number of columns. Therefore, we just gave my_vector 4 rows and 5 columns.
+
+- Class: cmd_question
+  Output: But, wait! That doesn`t sound like a vector any more. Well, it`s not. Now it's a matrix. View the contents of my_vector now to see what it looks like.
+  CorrectAnswer: my_vector
+  AnswerTests: omnitest(correctExpr='my_vector')
+  Hint: Type my_vector to view its contents.
+
+- Class: cmd_question
+  Output: Now, let`s confirm it's actually a matrix by using the class() function. Type class(my_vector) to see what I mean.
+  CorrectAnswer: class(my_vector)
+  AnswerTests: omnitest(correctExpr='class(my_vector)')
+  Hint: Type class(my_vector) to view the class of my_vector.
+
+- Class: cmd_question
+  Output: Sure enough, my_vector is now a matrix. We should store it in a new variable that helps us remember what it is. Store the value of my_vector in a new variable called my_matrix.
+  CorrectAnswer: my_matrix <- my_vector
+  AnswerTests: omnitest(correctExpr='my_matrix <- my_vector')
+  Hint: Since we can't just change the name of our my_vector variable, we'll assign its value to a new variable with my_matrix <- my_vector.
+
+- Class: text
+  Output: The example that we've used so far was meant to illustrate the point that a matrix is simply an atomic vector with a dimension attribute. A more direct method of creating the same matrix uses the matrix() function.
+
+- Class: cmd_question
+  Output: Bring up the help file for the matrix() function now using the `?` function.
+  CorrectAnswer: ?matrix
+  AnswerTests: omnitest(correctExpr='?matrix')
+  Hint: The command ?matrix will do the trick.
+
+- Class: cmd_question
+  Output: Now, look at the documentation for the matrix function and see if you can figure out how to create a matrix containing the same numbers (1-20) and dimensions (4 rows, 5 columns) by calling the matrix() function. Store the result in a variable called my_matrix2. Use 1:20 as an argument in matrix().
+  CorrectAnswer: my_matrix2 <- matrix(1:20, nrow=4, ncol=5)
+  AnswerTests: calculates_same_value('matrix(1:20, nrow=4, ncol=5)'); expr_creates_var('my_matrix2')
+  Hint: Call the matrix() function with three arguments -- 1:20, the number of rows, and the number of columns. Be sure to specify arguments by their proper names and store the result in my_matrix2 (not in my_matrix).
+
+- Class: cmd_question
+  Output: Finally, let's confirm that my_matrix and my_matrix2 are actually identical. The identical() function will tell us if its first two arguments are the same. Try it out.
+  CorrectAnswer: identical(my_matrix, my_matrix2)
+  AnswerTests: any_of_exprs('identical(my_matrix, my_matrix2)', 'identical(my_matrix2, my_matrix)')
+  Hint: If you're not sure about this one, then checkout the documentation for identical() using the `?` function.
+
+- Class: text
+  Output: Now, imagine that the numbers in our table represent some measurements from a Twitter analysis, where each row represents one user and each column represents one variable.
+
+- Class: text
+  Output: We may want to label the rows, so that we know which numbers belong to each user in our analysis. One way to do this is to add a column to the matrix, which contains the names of all four users.
+
+- Class: cmd_question
+  Output: Let's start by creating a character vector containing the names of our users -- realDonaldTrump, BarackObama, EmmanuelMacron, and HassanRouhani. Remember that double quotes tell R that something is a character string. Store the result in a variable called screen_name.
+  CorrectAnswer: screen_name <- c("realDonaldTrump", "BarackObama", "EmmanuelMacron", "HassanRouhani")
+  AnswerTests: omnitest(correctExpr='screen_name <- c("realDonaldTrump", "BarackObama", "EmmanuelMacron", "HassanRouhani")')
+  Hint: Make sure to copy each name (with the right capitalization) and to store the result in a variable called screen_name. Also, don't get the order of the users mixed up! 
+
+- Class: cmd_question
+  Output: Now we`ll use the cbind() function to `combine columns`. Don't worry about storing the result in a new variable. Just call cbind() with two arguments -- the screen_name vector and my_matrix.
+  CorrectAnswer: cbind(screen_name, my_matrix)
+  AnswerTests: omnitest(correctExpr='cbind(screen_name, my_matrix)')
+  Hint: Type cbind(screen_name, my_matrix) to add the names of our users to the matrix of numbers.
+
+- Class: text
+  Output: Something is fishy about our result! It appears that combining the character vector with our matrix of numbers caused everything to be enclosed in double quotes. This means we're left with a matrix of character strings, which is no good.
+
+- Class: text
+  Output: If you remember back to the beginning of this lesson, I told you that matrices can only contain ONE class of data. Therefore, when we tried to combine a character vector with a numeric matrix, R was forced to 'coerce' the numbers to characters, hence the double quotes.
+
+- Class: text
+  Output: This is called `implicit coercion`, because we didn`t ask for it. It just happened. But why didn`t R just convert the names of our users to numbers? I'll let you ponder that question on your own.
+
+- Class: cmd_question
+  Output: So, we're still left with the question of how to include the names of our users in the table without destroying the integrity of our numeric data. Try the following -- my_data <- data.frame(screen_name, my_matrix)
+  CorrectAnswer: my_data <- data.frame(screen_name, my_matrix)
+  AnswerTests: omnitest(correctExpr='my_data <- data.frame(screen_name, my_matrix)')
+  Hint: Type my_data <- data.frame(screen_name, my_matrix), so we can explore what happens.
+
+- Class: cmd_question
+  Output: Now view the contents of my_data to see what we've come up with.
+  CorrectAnswer: my_data
+  AnswerTests: omnitest(correctExpr='my_data')
+  Hint: Type my_data to view its contents.
+
+- Class: text
+  Output: It looks like the data.frame() function allowed us to store our character vector of names right alongside our matrix of numbers. That's exactly what we were hoping for! 
+
+- Class: text
+  Output: Behind the scenes, the data.frame() function takes any number of arguments and returns a single object of class `data.frame` that is composed of the original objects.
+
+- Class: cmd_question
+  Output: Let's confirm this by calling the class() function on our newly created data frame.
+  CorrectAnswer: class(my_data)
+  AnswerTests: omnitest(correctExpr='class(my_data)')
+  Hint: The class function takes one argument -- the object of which you want to determine the class.
+
+- Class: text
+  Output: It's also possible to assign names to the individual rows and columns of a data frame, which presents another possible way of determining which row of values in our table belongs to each user.
+
+- Class: text
+  Output: However, since we've already solved that problem, let's solve a different problem by assigning names to the columns of our data frame so that we know what type of measurement each column represents.
+
+- Class: cmd_question
+  Output: Since we have six columns (including user scree_names), we'll need to first create a vector containing one element for each column. Create a character vector called cnames that contains the following values (in order) -- "screen_name", "followers_count", "friends_count", "statuses_count", "favorites_count", "listed_count".
+  CorrectAnswer: cnames <- c("screen_name", "followers_count", "friends_count", "statuses_count", "favorites_count", "listed_count")
+  AnswerTests: omnitest(correctExpr='cnames <- c("screen_name", "followers_count", "friends_count", "statuses_count", "favorites_count", "listed_count")')
+  Hint: Make sure all of the names are lowercase, surrounded by double quotes, and separated with commas. Don't forget to use the c() function.
+
+- Class: cmd_question
+  Output: Now, use the colnames() function to set the `colnames` attribute for our data frame. This is similar to the way we used the dim() function earlier in this lesson. Use colnames() with my_data as argument and after the function add <- cnames
+  CorrectAnswer: colnames(my_data) <- cnames
+  AnswerTests: omnitest(correctExpr='colnames(my_data) <- cnames')
+  Hint: Try colnames(my_data) <- cnames.
+
+  
+- Class: cmd_question
+  Output: Let's see if that got the job done. Print the contents of my_data.
+  CorrectAnswer: my_data
+  AnswerTests: omnitest(correctExpr='my_data')
+  Hint: Print the contents of my_data to the console.
+
+- Class: text
+  Output: We will now work with real data collected over the Twitter API with the rtweet package. You should see in the environment the objects tweets with 4675 obs.
+
+- Class: cmd_question
+  Output: You can check the number of rows with nrow(). Try it with tweets!
+  CorrectAnswer: nrow(tweets)
+  AnswerTests: omnitest(correctExpr='nrow(tweets)')
+  Hint: Just use the function nrow and add tweets as argument.
+
+- Class: cmd_question
+  Output: Now check what class the object has with the function class.
+  CorrectAnswer: class(tweets)
+  AnswerTests: omnitest(correctExpr='class(tweets)')
+  Hint: Just use the function nrow and add tweets as argument.
+
+- Class: text
+  Output: As you can see it is a data frame and a tbl - which stands for tibble. Tibbles are more or less the same as data frames but subsetting works differently.
+
+- Class: text
+  Output: Some data-scientists prefer tibbles. However, most available code is still traditional - therefore we start with the `standard` way.
+
+- Class: cmd_question
+  Output: An advantage of tibbles is the automatic summary function if you call the object. Just type tweets and call the object.
+  CorrectAnswer: tweets
+  AnswerTests: omnitest(correctExpr='tweets')
+  Hint: Just use the function nrow and add tweets as argument.  
+
+- Class: text
+  Output: You will always get only the first ten rows returned in the console with a nice summary.
+
+- Class: cmd_question
+  Output: Let`s test subsetting. Use the box brackets [] to subset the first column which has the index number 1. Remember - [row,column]. Try to just call the first column
+  CorrectAnswer: tweets[ ,1]
+  AnswerTests: omnitest(correctExpr='tweets[ ,1]')
+  Hint: type tweets[ ,1]. Left we keep empty as we want all "rows" of column 1.  
+
+- Class: text
+  Output: As you can see - we get back a tibble with just one column and not a vector. Box brackets with index numbers always return a tibble! The same happens if you use tweets[ ,"user_id"].
+
+- Class: cmd_question
+  Output: However, we can still subest a column as vector if we use the $ subset (mydf$name_of_column). Try to call the first column user_id of the tibble tweets with the $.
+  CorrectAnswer: tweets$user_id
+  AnswerTests: omnitest(correctExpr='tweets$user_id')
+  Hint: Just type tweets$user_id. 
+
+- Class: text
+  Output: Now we get a vector as you can see. With a data frame (not tibble) both approaches would have returned a vector - with tibbles only the $ subset works.
+
+- Class: cmd_question
+  Output: Let`s check a preview of the data above in the source code window. Type View(tweets)
+  CorrectAnswer: View(tweets)
+  AnswerTests: omnitest(correctExpr='View(tweets)')
+  Hint: Just type View(tweets). 
+
+- Class: cmd_question
+  Output: Scroll a little to the right - we focus now on the column reply_to_status_id. Subset this column with the $ and save it in a new object called reply.
+  CorrectAnswer: View(reply <- tweets$reply_to_status_id)
+  AnswerTests: omnitest(correctExpr='reply <- tweets$reply_to_status_id')
+  Hint: Just type reply <- tweets$reply_to_status_id. 
+
+- Class: cmd_question
+  Output: NA value means no value available. All NA are not replies. If there is value it is a reply to a specific tweets. Let`s check the first 20 values of reply with 1:20 and []
+  CorrectAnswer: reply[1:20]
+  AnswerTests: omnitest(correctExpr='reply[1:20]')
+  Hint: Use the reply object together with the subset [1:20]. 
+
+- Class: cmd_question
+  Output: Very few replies in our dataset - but at least one among the first 20 tweets. Let`s use the is.na() function together with reply as argument. 
+  CorrectAnswer: is.na(reply)
+  AnswerTests: omnitest(correctExpr='is.na(reply)')
+  Hint: Just type is.na(reply). 
+- Class: text
+  Output: is.na() yields a vector of logical values the same length as reply, with TRUEs corresponding to NA values in replies and FALSEs corresponding to non-NA values in reply.
+
+- Class: text
+  Output: Let's start by indexing with logical vectors. One common scenario when working with real-world data is that we want to extract all elements of a vector that are NA. Recall that is.na(reply) yields a vector of logical values the same length as reply, with TRUEs corresponding to NA values in reply and FALSEs corresponding to non-NA values in reply.
+
+- Class: mult_question
+  Output: What do you think reply[is.na(reply)] will give you?
+  AnswerChoices: A vector of all NAs (ids of replied tweets); A vector with no NAs (ids of replied tweets); A vector of all NAs (no ids of replied tweets); A vector of TRUEs and FALSEs; A vector of length 0
+  CorrectAnswer: A vector of all NAs (no ids of replied tweets)
+  AnswerTests: omnitest(correctVal="A vector of all NAs (no ids of replied tweets)")
+  Hint: Remember that is.na(replies) tells us where the NAs are in a vector. NA means here no reply - thus no ids. So if we subset x based on that, what do you expect to happen?
+
+- Class: cmd_question
+  Output: Prove it to yourself by typing reply[is.na(reply)].
+  CorrectAnswer: reply[is.na(reply)]
+  AnswerTests: omnitest(correctExpr='reply[is.na(reply)]')
+  Hint: Type reply[is.na(reply)] to see that you get all NAs.
+
+- Class: cmd_question
+  Output: The operator `!` gives us the negation of a logical expression, so !is.na(x) can be read as `is not NA`. Type reply[!is.na(reply)]. Give it a try.
+  CorrectAnswer: reply[!is.na(reply)]
+  AnswerTests: omnitest(correctExpr='reply[!is.na(reply)]')
+  Hint: Type reply[!is.na(reply)] to capture all non-missing values from reply.
+
+- Class: cmd_question
+  Output: Let`s subset now directly all replies. We now directly call the column with tweets$reply_to_status_id. We use !is.na(tweets$reply_to_status_id) and put it as subset for the rows. Type tweets[!is.na(tweets$reply_to_status_id), ]
+  CorrectAnswer: tweets[!is.na(tweets$reply_to_status_id), ]
+  AnswerTests: omnitest(correctExpr='tweets[!is.na(tweets$reply_to_status_id), ]')
+  Hint: Type tweets[!is.na(tweets$reply_to_status_id), ].
+
+- Class: text
+  Output: As you can see, we now have selected only replies (see the relevant columns in the console).
+
+- Class: cmd_question
+  Output: Let`s try the is_retweet column. Let`s check with str(tweets$is_retweet) what kind of data this column has.
+  CorrectAnswer: str(tweets$is_retweet)
+  AnswerTests: omnitest(correctExpr='str(tweets$is_retweet)')
+  Hint: Type str(tweets$is_retweet).
+
+- Class: cmd_question
+  Output: We have the data class logical. TRUE means obviously "is retweet". Try to directly subset all retweets with this column. Use tweets$is_retweet inside of the [] to select the retweets in the dataset.
+  CorrectAnswer: tweets[tweets$is_retweet, ]
+  AnswerTests: omnitest(correctExpr='tweets[tweets$is_retweet, ]')
+  Hint: Type tweets[tweets$is_retweet, ].
+
+- Class: text
+  Output: You can always save your subsets in a new object with name_new_object <- ...
+
+- Class: cmd_question
+  Output: Almost finished for today - let`s try the table function with the column lang. Subset the column lang of the tweets object and use it as argument inside of table()
+  CorrectAnswer: table(tweets$lang)
+  AnswerTests: omnitest(correctExpr='table(tweets$lang)')
+  Hint: Just type table(tweets$lang). 
+  
+- Class: text
+  Output: I was using "taiwan OR 臺灣" as search query to collect the tweets. The majority of tweets are written in English.
+
+- Class: cmd_question
+  Output: Let's focus on one last column - created_at. Check the max value in this column with max() and $ subset.
+  CorrectAnswer: max(tweets$created_at)
+  AnswerTests: omnitest(correctExpr='max(tweets$created_at)')
+  Hint: Just type max(tweets$created_at). 
+
+- Class: cmd_question
+  Output: That is the newest tweet. Check the min value in this column with min() and $ subset.
+  CorrectAnswer: min(tweets$created_at)
+  AnswerTests: omnitest(correctExpr='min(tweets$created_at)')
+  Hint: Just type min(tweets$created_at). 
+
+- Class: cmd_question
+  Output: Now use both functions together and subtract the min value from the max value with min() and max().
+  CorrectAnswer: max(tweets$created_at) - min(tweets$created_at)
+  AnswerTests: omnitest(correctExpr='max(tweets$created_at) - min(tweets$created_at)')
+  Hint: Just type max(tweets$created_at) - min(tweets$created_at). 
+
+- Class: text
+  Output: With 5000 tweets I can cover 4 hours with my search terms.
+
+- Class: text
+  Output: Important points this week - difference between data frames and matrices, use the $ when subsetting tibbles if you want a vector, how to use is.na(), what kind of data we get back from the API.
+
+- Class: text
+  Output: That's it! Next week you will download your own tweets - stay tuned!
+   
+
+  
+
