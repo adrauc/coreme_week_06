@@ -233,7 +233,7 @@
   Hint: Type sd_m <- sd(s1_df$sex == "M")
 
 - Class: cmd_question
-  Output: n is 10 as we only sampled 10 babies. We no get the se with sd_m/sqrt(10). Save the value in se_m.
+  Output: n is 10 as we only sampled 10 babies. We now get the se with sd_m/sqrt(10). Save the value in se_m.
   CorrectAnswer: se_m <- sd_m/sqrt(10)
   AnswerTests: omnitest(correctExpr='se_m <- sd_m/sqrt(10)')
   Hint: Type se_m <- sd_m/sqrt(10)
@@ -251,7 +251,7 @@
   Hint: Type ci_sample <- se_m * 1.96
 
 - Class: cmd_question
-  Output: Now we can say there is a 95% probability that the true value (population y) lies between... type mean_m - ci_sample
+  Output: Now we can say the CI for population y is... type mean_m - ci_sample 
   CorrectAnswer: mean_m - ci_sample
   AnswerTests: omnitest(correctExpr='mean_m - ci_sample')
   Hint: Type mean_m - ci_sample
@@ -269,7 +269,7 @@
   Output: If we increase our n - the standard error will become smaller.
   
 - Class: mult_question
-  Output: Thank you for finishing this class. Press Enter and then please copy the completion code that will appear in the console after this question into the google form I created (https://forms.gle/4LfACvhz4a2JzSQ56). Would you like to get the completion code? Type the number next to Yes and press Enter - then you need to Enter your student id and name.
+  Output: Thank you for finishing this class. Press Enter and then please copy the completion code that will appear in the console after this question into the google form I created (https://forms.gle/pbR25h6iXDLFxtMg9). Would you like to get the completion code? Type the number next to Yes and press Enter - then you need to Enter your student id and name.
   CorrectAnswer: NULL
   AnswerChoices: Yes;No
   AnswerTests: get_token()
